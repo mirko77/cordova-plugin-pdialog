@@ -83,10 +83,10 @@ public class PDialog extends CordovaPlugin {
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
-			    if (this.cordova.getActivity().isDestroyed()) {
+			    if (cordova.getActivity().isDestroyed()) {
                     return;
                  }
-			
+
 				if (PDialog.pDialogObj != null && PDialog.pDialogObj.isShowing()) {
 					PDialog.pDialogObj.dismiss();
 					PDialog.pDialogObj = null;
