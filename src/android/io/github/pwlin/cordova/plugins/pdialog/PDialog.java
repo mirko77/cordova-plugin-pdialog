@@ -89,9 +89,16 @@ public class PDialog extends CordovaPlugin {
 			@Override
 			public void run() {
 				if (PDialog.pDialogObj != null && PDialog.pDialogObj.isShowing()) {
-					PDialog.pDialogObj.dismiss();
-					PDialog.pDialogObj = null;
+				try {
+					    PDialog.pDialogObj.dismiss();
+					}
+					catch (Exception e) {
+                         //do nothing
+                    }
+
+                    PDialog.pDialogObj = null;
 				}
+				
 				JSONObject argsObj = null;
 				try {
 					argsObj = new JSONObject(rawArgs);
