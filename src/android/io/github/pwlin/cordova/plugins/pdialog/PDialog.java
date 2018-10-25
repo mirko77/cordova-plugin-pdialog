@@ -56,6 +56,11 @@ public class PDialog extends CordovaPlugin {
 		if (this.cordova.getActivity().isFinishing()) {
 			return true;
 		}
+
+		if (this.cordova.getActivity().isDestroyed()) {
+            return true;
+        }
+
 		if (action.equals("init")) {
 			this.init(rawArgs);
 		} else if (action.equals("dismiss")) {
@@ -83,10 +88,6 @@ public class PDialog extends CordovaPlugin {
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
-			    if (cordova.getActivity().isDestroyed()) {
-                    return;
-                 }
-
 				if (PDialog.pDialogObj != null && PDialog.pDialogObj.isShowing()) {
 					PDialog.pDialogObj.dismiss();
 					PDialog.pDialogObj = null;
